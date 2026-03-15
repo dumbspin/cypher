@@ -6,6 +6,7 @@ rate limiting, error handlers, and registers all API routes.
 """
 
 import os
+import logging
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
@@ -54,13 +55,16 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+logger = logging.getLogger(__name__)
+
 # ── CORS ───────────────────────────────────────────────────────────────────────
 # Only allow the frontend origin(s) from the environment variable.
 allowed_origins_raw = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
 allowed_origins = [o.strip() for o in allowed_origins_raw.split(",") if o.strip()]
 
 # Log allowed origins on startup for easier troubleshooting
-print(f"INFO: CORS enabled for origins: {allowed_origins}")
+logger.info("CORS policy: allowing origins: %s", allowed_origins)
+print(f"CORS POLICY: {allowed_origins}") # Print for Render logs visibility
 
 app.add_middleware(
     CORSMiddleware,
@@ -73,6 +77,15 @@ app.add_middleware(
 
 # ── Global exception handlers ──────────────────────────────────────────────────
 from fastapi.exceptions import RequestValidationError
+
+@app.get("/debug-cors")
+async def debug_cors():
+    """Diagnostic endpoint to verify environment variables in production."""
+    return {
+        "status": "ready",
+        "allowed_origins": allowed_origins,
+        "environment_origins_raw": os.getenv("ALLOWED_ORIGINS"),
+    }
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
