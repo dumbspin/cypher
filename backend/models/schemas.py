@@ -1,5 +1,5 @@
 """
-Pydantic schemas for all request/response models in SentinelURL.
+Pydantic schemas for all request/response models in Cypher.
 
 Strict typing ensures the API never accepts malformed data and always
 returns a predictable, documented structure to the frontend.

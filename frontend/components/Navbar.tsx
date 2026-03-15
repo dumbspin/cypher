@@ -19,7 +19,7 @@ export function Navbar() {
               <Shield className="w-5 h-5" strokeWidth={2} fill="rgba(91,91,214,0.15)" />
             </div>
             <span className="font-bold text-base text-text-primary">
-              Sentinel<span className="text-accent">URL</span>
+              Cy<span className="text-accent">pher</span>
             </span>
           </Link>
 
@@ -42,7 +42,7 @@ export function Navbar() {
               Advisories
             </button>
             <a
-              href="https://github.com"
+              href="https://github.com/dumbspin/url_phishing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-1.5 rounded-full font-medium text-text-muted hover:bg-accent/10 hover:text-accent flex items-center gap-1.5 transition-all"

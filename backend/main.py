@@ -1,5 +1,5 @@
 """
-SentinelURL Backend — FastAPI Application Entry Point
+Cypher Backend — FastAPI Application Entry Point
 
 This module bootstraps the FastAPI application, configures CORS,
 rate limiting, error handlers, and registers all API routes.
@@ -44,7 +44,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="SentinelURL API",
+    title="Cypher API",
     description="Phishing URL Detection Platform — backend API",
     version="1.0.0",
     lifespan=lifespan,

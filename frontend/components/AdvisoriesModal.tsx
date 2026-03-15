@@ -88,7 +88,7 @@ export function AdvisoriesModal({ isOpen, onClose }: AdvisoriesModalProps) {
                 {/* Footer */}
                 <div className="px-6 py-4 bg-accent/5 border-t border-border text-center">
                   <p className="text-xs text-text-muted">
-                    Stay safe out there. Sentinel<span className="text-accent font-semibold">URL</span> is here to help.
+                    Stay safe out there. Cy<span className="text-accent font-semibold">pher</span> is here to help.
                   </p>
                 </div>
               </div>

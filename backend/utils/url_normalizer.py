@@ -155,7 +155,7 @@ async def _follow_redirects(url: str) -> str:
     async with httpx.AsyncClient(
         follow_redirects=False,   # We handle redirects manually to SSRF-check each hop
         timeout=timeout,
-        headers={"User-Agent": "SentinelURL-Scanner/1.0"},
+        headers={"User-Agent": "Cypher-Scanner/1.0"},
         verify=False,             # Some phishing sites have self-signed certs; we still want to reach them
     ) as client:
         current_url = url

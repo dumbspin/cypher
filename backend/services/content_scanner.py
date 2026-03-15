@@ -169,7 +169,7 @@ async def _fetch_html(url: str) -> str | None:
     - SSRF validation before connecting
     - 2 MB response body cap
     - 10s connect / 15s read timeouts
-    - SentinelURL-Scanner/1.0 User-Agent
+    - Cypher-Scanner/1.0 User-Agent
 
     Args:
         url: URL to fetch.
@@ -187,7 +187,7 @@ async def _fetch_html(url: str) -> str | None:
         async with httpx.AsyncClient(
             timeout=TIMEOUT,
             follow_redirects=True,
-            headers={"User-Agent": "SentinelURL-Scanner/1.0"},
+            headers={"User-Agent": "Cypher-Scanner/1.0"},
             verify=False,  # Reach phishing sites regardless of cert validity
         ) as client:
             async with client.stream("GET", url) as response:

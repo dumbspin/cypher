@@ -120,7 +120,7 @@ async def _rdap_creation_date(domain: str) -> Optional[datetime]:
     url = f"https://rdap.org/domain/{domain}"
     try:
         async with httpx.AsyncClient(timeout=RDAP_TIMEOUT) as client:
-            response = await client.get(url, headers={"User-Agent": "SentinelURL-Scanner/1.0"})
+            response = await client.get(url, headers={"User-Agent": "Cypher-Scanner/1.0"})
             if response.status_code != 200:
                 return None
             data = response.json()

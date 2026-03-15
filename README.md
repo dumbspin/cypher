@@ -1,4 +1,4 @@
-# SentinelURL — Phishing URL Detection Platform
+# Cypher — Phishing URL Detection Platform
 
 > Instant phishing detection: URL analysis, domain intelligence, blacklist checks, and page content scanning — all in one scan.
 
@@ -7,7 +7,7 @@
 ## Architecture
 
 ```
-sentinelurl/
+cypher/
 ├── backend/      (Python FastAPI — deployed on Render.com free tier)
 └── frontend/     (Next.js 14 App Router — deployed on Vercel free tier)
 ```
@@ -23,7 +23,7 @@ sentinelurl/
 ### Backend
 
 ```bash
-cd sentinelurl/backend
+cd cypher/backend
 
 # 1. Create virtual environment
 python -m venv venv
@@ -46,7 +46,7 @@ API docs available at: `http://localhost:8000/docs`
 ### Frontend
 
 ```bash
-cd sentinelurl/frontend
+cd cypher/frontend
 
 # 1. Install dependencies
 npm install
@@ -179,7 +179,7 @@ Returns `{ "status": "ok" }` — used by UptimeRobot to prevent Render cold star
 
 ### Backend — Render.com (Free Tier)
 
-1. Push `sentinelurl/backend/` to a GitHub repo
+1. Push `cypher/backend/` to a GitHub repo
 2. Create a new **Web Service** on [render.com](https://render.com)
 3. Set start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 4. Add all environment variables in the Render dashboard
@@ -189,7 +189,7 @@ Returns `{ "status": "ok" }` — used by UptimeRobot to prevent Render cold star
 
 ### Frontend — Vercel (Free Tier)
 
-1. Push `sentinelurl/frontend/` to a GitHub repo
+1. Push `cypher/frontend/` to a GitHub repo
 2. Import the repo on [vercel.com](https://vercel.com)
 3. Set environment variable: `NEXT_PUBLIC_API_URL=https://your-backend.onrender.com`
 4. Deploy

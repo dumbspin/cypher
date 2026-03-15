@@ -130,7 +130,7 @@ class BlacklistChecker:
             with httpx.Client(timeout=OPENPHISH_DOWNLOAD_TIMEOUT) as client:
                 response = client.get(
                     OPENPHISH_FEED_URL,
-                    headers={"User-Agent": "SentinelURL-Scanner/1.0"},
+                    headers={"User-Agent": "Cypher-Scanner/1.0"},
                 )
                 if response.status_code == 200:
                     OPENPHISH_CACHE_FILE.write_text(response.text, encoding="utf-8")
@@ -200,7 +200,7 @@ class BlacklistChecker:
 
         request_body = {
             "client": {
-                "clientId": "sentinelurl",
+                "clientId": "cypher",
                 "clientVersion": "1.0",
             },
             "threatInfo": {
@@ -218,7 +218,7 @@ class BlacklistChecker:
                     json=request_body,
                     headers={
                         "Content-Type": "application/json",
-                        "User-Agent": "SentinelURL-Scanner/1.0",
+                        "User-Agent": "Cypher-Scanner/1.0",
                     },
                 )
                 data = response.json()
@@ -258,7 +258,7 @@ class BlacklistChecker:
                 response = await client.get(
                     PHISHDESTROY_URL,
                     params={"domain": registered_domain},
-                    headers={"User-Agent": "SentinelURL-Scanner/1.0"},
+                    headers={"User-Agent": "Cypher-Scanner/1.0"},
                 )
                 # Only parse JSON on a successful response.
                 if response.status_code == 200:

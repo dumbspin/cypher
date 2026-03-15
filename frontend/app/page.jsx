@@ -23,13 +23,13 @@ function ScanSkeleton() {
   );
 }
 
-// Integration brand logos strip
+// Integration brand logos strip — uses actual partner logos from /partners/
 const INTEGRATIONS = [
-  { name: "VirusTotal", style: "font-black tracking-tight italic" },
-  { name: "PhishTank", style: "font-bold tracking-widest uppercase" },
-  { name: "URLScan", style: "font-extrabold tracking-tight" },
-  { name: "AbuseIPDB", style: "font-bold italic" },
-  { name: "Whois", style: "font-black tracking-wider" },
+  { name: "VirusTotal", logo: "/partners/virustotal.png" },
+  { name: "PhishTank", logo: "/partners/phishtank.png" },
+  { name: "URLScan", logo: "/partners/urlscan.io.png" },
+  { name: "AbuseIPDB", logo: "/partners/abuseipdb.png" },
+  { name: "Whois", logo: "/partners/whois.png" },
 ];
 
 export default function HomePage() {
@@ -82,8 +82,7 @@ export default function HomePage() {
           <br className="hidden sm:block" />
           <em className="font-serif font-bold not-italic text-accent">
             Stay Safe
-          </em>{" "}
-          with AI
+          </em>
         </motion.h1>
 
         {/* Subtitle */}
@@ -108,7 +107,7 @@ export default function HomePage() {
             Scan a URL
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/dumbspin/url_phishing"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary text-base px-6 py-3.5"
@@ -165,13 +164,20 @@ export default function HomePage() {
             </p>
             <div className="flex-1 h-px bg-border-solid opacity-60" />
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+          <div className="flex items-center justify-center gap-8 sm:gap-14 flex-nowrap">
             {INTEGRATIONS.map((brand) => (
               <span
                 key={brand.name}
-                className={`text-text-muted text-lg opacity-60 hover:opacity-90 transition-opacity ${brand.style}`}
+                className="flex items-center gap-2.5 opacity-60 hover:opacity-100 transition-opacity"
               >
-                {brand.name}
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="h-7 w-auto object-contain"
+                />
+                <span className="text-text-muted text-sm font-semibold whitespace-nowrap">
+                  {brand.name}
+                </span>
               </span>
             ))}
           </div>

@@ -3,7 +3,7 @@ import { Navbar } from "../components/Navbar";
 import "./globals.css";
 
 export const metadata = {
-  title: "SentinelURL — Phishing Detection Platform",
+  title: "Cypher — Phishing Detection Platform",
   description:
     "Instantly analyse any URL for phishing indicators, domain age, blacklist membership, and more. Free, fast, and privacy-focused.",
   keywords: "phishing detection, URL scanner, malicious URL, cybersecurity, phishtank",
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
               <div className="max-w-5xl mx-auto px-4">
                 <div className="h-px bg-border-solid w-full mb-8 opacity-50" />
                 <p className="text-text-muted text-sm font-medium mb-2">
-                  © {new Date().getFullYear()} SentinelURL — AI-Powered Security
+                  © {new Date().getFullYear()} Cypher — Intelligent Security
                 </p>
                 <p className="text-text-muted/60 text-xs">
                   Built for educational purposes. <span className="text-accent underline decoration-accent/30 underline-offset-4">Free &amp; Open Source.</span>
