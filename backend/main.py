@@ -55,17 +55,19 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # ── CORS ───────────────────────────────────────────────────────────────────────
-# Only allow the frontend origin from the environment variable.
-# Never use wildcard '*' — it would expose the API to any origin.
+# Only allow the frontend origin(s) from the environment variable.
 allowed_origins_raw = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000")
 allowed_origins = [o.strip() for o in allowed_origins_raw.split(",") if o.strip()]
+
+# Log allowed origins on startup for easier troubleshooting
+print(f"INFO: CORS enabled for origins: {allowed_origins}")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "Authorization"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
 )
 
 

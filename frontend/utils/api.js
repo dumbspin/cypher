@@ -16,11 +16,17 @@ const BASE_URL =
  * @throws {Error} On network failure or non-200 HTTP status.
  */
 export async function analyzeUrl(url) {
-  const response = await fetch(`${BASE_URL}/analyze`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url }),
-  });
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), 30000); // 30s timeout
+
+  try {
+    const response = await fetch(`${BASE_URL}/analyze`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url }),
+      signal: controller.signal,
+    });
+    clearTimeout(id);
 
   if (!response.ok) {
     const errData = await response.json().catch(() => ({}));
@@ -29,34 +35,45 @@ export async function analyzeUrl(url) {
     );
   }
 
-  return response.json();
+    clearTimeout(id);
+    return response.json();
+  } catch (err) {
+    clearTimeout(id);
+    if (err.name === "AbortError") {
+      throw new Error("Request timed out after 30 seconds");
+    }
+    throw err;
+  }
 }
 
-/**
- * Upload a CSV file for bulk URL scanning via POST /bulk.
- *
- * @param {File} file - A File object from an <input type="file"> or dropzone.
- * @param {function} onProgress - Optional progress callback (not used with fetch).
- * @returns {Promise<object>} The BulkAnalyzeResponse from the backend.
- * @throws {Error} On network failure or non-200 HTTP status.
- */
 export async function bulkAnalyzeUrls(file) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), 60000); // 60s for bulk
+
   const formData = new FormData();
   formData.append("file", file);
 
-  const response = await fetch(`${BASE_URL}/bulk`, {
-    method: "POST",
-    body: formData,
-  });
+  try {
+    const response = await fetch(`${BASE_URL}/bulk`, {
+      method: "POST",
+      body: formData,
+      signal: controller.signal,
+    });
+    clearTimeout(id);
 
-  if (!response.ok) {
-    const errData = await response.json().catch(() => ({}));
-    throw new Error(
-      errData.detail || `Server returned ${response.status}`
-    );
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      throw new Error(errData.detail || `Server returned ${response.status}`);
+    }
+
+    return response.json();
+  } catch (err) {
+    clearTimeout(id);
+    if (err.name === "AbortError") {
+      throw new Error("Bulk request timed out after 60 seconds");
+    }
+    throw err;
   }
-
-  return response.json();
 }
 
 /**
