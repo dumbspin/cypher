@@ -168,16 +168,13 @@ export default function HomePage() {
             {INTEGRATIONS.map((brand) => (
               <span
                 key={brand.name}
-                className="flex items-center gap-2.5 opacity-60 hover:opacity-100 transition-opacity"
+                className="flex items-center justify-center transition-transform hover:scale-105"
               >
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="h-7 w-auto object-contain"
+                  className="h-8 w-auto object-contain"
                 />
-                <span className="text-text-muted text-sm font-semibold whitespace-nowrap">
-                  {brand.name}
-                </span>
               </span>
             ))}
           </div>
