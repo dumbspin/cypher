@@ -1,0 +1,4 @@
+# OpenPhish URL feed cache
+# This file is auto-refreshed every 24 hours by the background thread.
+# Add known phishing URLs below (one per line) for testing.
+# Lines starting with '#' are ignored.

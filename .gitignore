@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+backend/venv/
+backend/__pycache__/
+frontend/.next/
+
+# Environment Variables
+.env
+.env.local
+backend/.env
+frontend/.env.local
+
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pip-log.txt
+
+# Artifacts/Misc
+C:/Users/dwive/.gemini/antigravity/brain/
+C:/Users/dwive/.gemini/antigravity/tmp/
+C:/Users/dwive/.gemini/antigravity/logs/
+*.png
+*.webp
