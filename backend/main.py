@@ -70,7 +70,7 @@ allowed_origins_raw = os.getenv("ALLOWED_ORIGINS", _DEFAULT_ORIGINS)
 if allowed_origins_raw.strip() == "*":
     allowed_origins = ["*"]
 else:
-    allowed_origins = [o.strip() for o in allowed_origins_raw.split(",") if o.strip()]
+    allowed_origins = [o.strip().rstrip("/") for o in allowed_origins_raw.split(",") if o.strip()]
 
 # Log allowed origins on startup for easier troubleshooting
 logger.info("CORS policy: allowing origins: %s", allowed_origins)
