@@ -61,18 +61,23 @@ const advisories = [
 
 const AdvisoriesSection: React.FC = () => {
   return (
-    <section className="py-24 px-8 lg:px-16 bg-bg">
-      <div className="flex justify-between items-center mb-10">
-        <div>
-          <span className="section-tag text-accent/80 mb-2">LIVE ALERTS</span>
-          <h2 className="text-3xl font-800 text-text">Active threat advisories</h2>
+    <section className="py-24 px-8 lg:px-16 bg-bg border-t border-white/5">
+      {/* NEWSPAPER MASTHEAD */}
+      <div className="flex flex-col items-center mb-16 border-b-2 border-text/10 pb-8">
+        <div className="flex w-full justify-between items-end mb-4 font-mono text-[9px] text-muted/30 uppercase tracking-[3px]">
+          <span>Vol. 01 — No. 04</span>
+          <span>Friday, March 19, 2026</span>
+          <span>Sentinel Grid Edition</span>
         </div>
-        <button className="px-5 py-2.5 rounded-xl border border-border text-muted text-sm font-bold hover:border-accent/35 hover:text-accent transition-all">
-          View All Advisories →
-        </button>
+        <h2 className="text-5xl lg:text-7xl font-serif font-900 text-text tracking-tight mb-2 italic">
+          The Cypher Gazette
+        </h2>
+        <div className="w-full border-t border-text/20 pt-4 flex justify-center">
+          <span className="section-tag text-accent font-bold">LATEST CYBER THREAT ADVISORIES — UTTARAKHAND</span>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-10">
         {advisories.map((ad, i) => (
           <motion.div
             key={i}
@@ -80,30 +85,56 @@ const AdvisoriesSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.07 }}
-            className={`card-style p-6 border-t-4 ${
-              ad.color === "danger" ? "border-t-danger" : 
-              ad.color === "warning" ? "border-t-warning" : "border-t-purple"
+            className={`flex flex-col relative ${
+              i % 3 !== 2 ? "lg:border-r lg:border-white/5 lg:pr-10" : ""
+            } ${
+              i % 2 !== 1 ? "md:border-r md:border-white/5 md:pr-6 lg:md:pr-10" : "md:border-r-0"
+            } ${
+              i % 3 === 2 ? "lg:border-r-0" : ""
             }`}
           >
-            <span className={`px-2 py-0.5 rounded text-[9px] font-bold tracking-wider uppercase inline-block mb-3 ${ad.dim}`}>
-              {ad.severity}
-            </span>
-            <h3 className="text-[14px] font-bold text-text leading-tight mb-3">
+            <div className="flex items-center justify-between mb-4">
+              <span className={`px-2 py-0.5 rounded font-mono text-[9px] font-bold tracking-wider uppercase ${ad.dim}`}>
+                {ad.severity} ALERT
+              </span>
+              <span className="font-mono text-[10px] text-muted/30 uppercase">
+                ID: CPH-{1024 + i}
+              </span>
+            </div>
+
+            <h3 className="text-2xl font-serif font-800 text-text leading-[1.2] mb-4 hover:text-accent transition-colors cursor-pointer">
               {ad.title}
             </h3>
-            <p className="text-[12px] text-muted leading-relaxed mb-5">
-              {ad.desc}
+
+            <p className="text-[13px] text-muted/80 leading-relaxed mb-6 text-justify lg:text-left font-sans">
+              <span className="text-2xl font-serif float-left mr-2 leading-none mt-1 text-accent capitalize">{ad.desc.charAt(0)}</span>
+              {ad.desc.slice(1)}
             </p>
-            <div className="flex justify-between items-center border-t border-white/5 pt-4 mt-auto">
-              <span className="bg-surface2 px-2 py-0.5 rounded text-[10px] font-bold text-muted/60">
+
+            <div className="mt-auto pt-4 border-t border-white/5 flex flex-col gap-2">
+              <div className="flex justify-between items-center">
+                <span className="font-mono text-[10px] text-accent/60 uppercase tracking-wider">
+                   Target Areas
+                </span>
+                <span className="font-mono text-[10px] text-muted/40 uppercase">
+                  {ad.count}
+                </span>
+              </div>
+              <p className="text-[11px] font-serif italic text-muted/50 leading-tight">
                 {ad.districts}
-              </span>
-              <span className="text-[10px] font-bold text-muted/40 uppercase">
-                {ad.count}
-              </span>
+              </p>
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="mt-20 pt-8 border-t-2 border-text/10 flex justify-center">
+        <button className="group flex flex-col items-center gap-3">
+          <span className="font-serif italic text-xl text-muted hover:text-accent transition-all">
+            Read all archived advisories
+          </span>
+          <div className="w-12 h-[1px] bg-accent/30 group-hover:w-24 transition-all" />
+        </button>
       </div>
     </section>
   );
