@@ -74,19 +74,14 @@ const ScanSection: React.FC = () => {
             placeholder="https://suspicious-link.tk/verify..."
             className="flex-1 bg-surface2 border border-border rounded-xl px-5 py-3.5 text-[15px] text-text outline-none focus:border-accent/35 transition-all placeholder:text-muted/30"
           />
-          <button
-            onClick={handleScan}
-            disabled={isScanning}
-            className="bg-accent text-bg font-bold px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.97] transition-all disabled:opacity-50 min-w-[140px]"
+          <a
+            href="https://url-phishing-ten.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-accent text-bg font-bold px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.97] transition-all flex items-center justify-center min-w-[140px]"
           >
-            {isScanning ? (
-              <span className="flex items-center gap-1">
-                Analysing<span className="animate-pulse">...</span>
-              </span>
-            ) : (
-              "Scan Threat"
-            )}
-          </button>
+            Scan Threat
+          </a>
         </div>
 
         <div className="flex flex-wrap gap-2 mt-4">

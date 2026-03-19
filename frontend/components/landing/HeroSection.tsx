@@ -70,7 +70,7 @@ const HeroSection: React.FC<{ onScanClick: () => void }> = ({ onScanClick }) => 
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={onScanClick}
-          className="bg-accent text-bg font-bold text-[15px] px-8 py-3.5 rounded-xl hover:opacity-90 transition-all flex items-center gap-2"
+          className="bg-[#ffb703] shadow-[0_0_20px_rgba(255,183,3,0.3)] text-bg font-bold text-[15px] px-8 py-3.5 rounded-xl hover:opacity-90 hover:shadow-[0_0_30px_rgba(255,183,3,0.5)] transition-all flex items-center gap-2"
         >
           Start Scanning <span className="text-lg">→</span>
         </motion.button>
