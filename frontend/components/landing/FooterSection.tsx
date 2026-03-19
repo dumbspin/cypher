@@ -8,13 +8,15 @@ const FooterSection: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 mb-16">
         {/* Column 1 - Brand */}
         <div className="flex flex-col items-start">
-          <div className="flex items-center gap-2 mb-6 pointer-events-none">
-            <div className="relative w-8 h-8">
-              <svg viewBox="0 0 24 24" className="w-full h-full fill-accent/12 stroke-accent stroke-[1.4px]">
-                <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
-              </svg>
+          <div className="flex items-center gap-3 mb-6 pointer-events-none">
+            <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/10">
+              <img 
+                src="/cypher_logo.jpeg" 
+                alt="Cypher Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="text-[19px] font-800 text-accent tracking-[2px]">CYPHER</span>
+            <span className="text-[19px] font-800 text-accent tracking-[2px] font-display">CYPHER</span>
           </div>
           <p className="text-[13px] text-muted leading-relaxed max-w-[200px] mb-6">
             Uttarakhand&apos;s first community-powered cyber threat intelligence platform. $0/month infrastructure.

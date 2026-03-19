@@ -16,18 +16,17 @@ const NavBar: React.FC<NavBarProps> = () => {
     <nav className="sticky top-0 z-[100] h-[58px] bg-bg/93 backdrop-blur-md border-b border-white/6 px-6 flex items-center justify-between">
       {/* LEFT - Logo */}
       <div 
-        className="flex items-center gap-2 cursor-pointer group"
+        className="flex items-center gap-3 cursor-pointer group"
         onClick={scrollToTop}
       >
-        <div className="relative w-7 h-7">
-          <svg viewBox="0 0 24 24" className="w-full h-full fill-accent/12 stroke-accent stroke-[1.4px]">
-            <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
-          </svg>
-          <svg viewBox="0 0 24 24" className="absolute inset-0 w-full h-full fill-none stroke-accent stroke-[1.5px] scale-50 translate-y-0.5">
-            <path d="M5 13l4 4L19 7" />
-          </svg>
+        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10 group-hover:border-accent/30 transition-all">
+          <img 
+            src="/cypher_logo.jpeg" 
+            alt="Cypher Logo" 
+            className="w-full h-full object-cover"
+          />
         </div>
-        <span className="text-[17px] font-800 text-accent tracking-[2px]">CYPHER</span>
+        <span className="text-[17px] font-800 text-accent tracking-[2px] font-display">CYPHER</span>
       </div>
 
       {/* RIGHT - Navigation Links */}
