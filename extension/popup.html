@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cypher — Phishing Detection</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-main">
+        <img src="icons/icon48.png" alt="Cypher Logo" class="logo">
+        <h1>Cypher</h1>
+      </div>
+      <span class="badge-status">API: Online</span>
+    </header>
+
+    <main>
+      <!-- Active Analysis Card -->
+      <section class="card active-site">
+        <div class="card-header">
+          <h3>Current Analysis</h3>
+          <div id="classification-badge" class="badge">Checking...</div>
+        </div>
+
+        <div class="url-display">
+          <p class="label">Target</p>
+          <div id="current-url" class="url-text">Loading...</div>
+        </div>
+
+        <div id="loader" class="skeleton-loader">
+          <div class="skeleton-line" style="width: 100%;"></div>
+          <div class="skeleton-line" style="width: 80%;"></div>
+        </div>
+
+        <div id="result-content" class="hidden">
+          <div class="overview-box">
+            <div class="risk-meter-mini">
+              <svg viewBox="0 0 36 36" class="circular-chart">
+                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path id="circle-fill" class="circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <text x="18" y="20.35" class="percentage" id="risk-score">0</text>
+              </svg>
+            </div>
+            <div class="status-info">
+              <p class="label">Risk Level</p>
+              <p id="risk-desc" class="status-text">Safe</p>
+            </div>
+          </div>
+
+          <div class="details-tabs">
+            <div class="details-section">
+              <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg> Technical Report</h4>
+              <div class="info-grid">
+                <div class="info-item">
+                  <span class="info-label">Domain Age</span>
+                  <span id="domain-age" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Registrar</span>
+                  <span id="domain-registrar" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Blacklisted</span>
+                  <span id="is-blacklisted" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Scan Trace</span>
+                  <span id="scan-id" class="info-value">-</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-section">
+              <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg> Detection Signals</h4>
+              <ul id="reasons-list" class="reasons-list">
+                <li class="empty-state">No suspicious patterns found.</li>
+              </ul>
+            </div>
+
+            <div class="details-section">
+              <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c0 1.1.9 2 2 2zm-12.5-6L11 15.51 14.5 11 19 17H5l3.5-5z"/></svg> Sight Preview</h4>
+              <div class="screenshot-box">
+                <img id="screenshot-img" src="" alt="Screenshot" class="hidden">
+                <div id="screenshot-placeholder" class="placeholder">
+                  <span class="pulse"></span>
+                  <p>Awaiting snapshot...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Scan Field -->
+      <section class="quick-scan">
+        <div class="input-wrapper">
+          <input type="text" id="manual-url" placeholder="Deep scan URL..." class="input-field">
+          <button id="scan-btn" class="btn-primary">Scan</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>SentinelURL • Cyber Intelligence v1.0</p>
+    </footer>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
