@@ -47,13 +47,14 @@
   body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-roboto-mono);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
     font-weight: 800;
     letter-spacing: -1.5px;
   }
@@ -88,8 +89,16 @@
   }
 
   .mono-label {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-roboto-mono);
     letter-spacing: 1.5px;
+  }
+
+  .playfair-display {
+    font-family: var(--font-playfair);
+  }
+
+  .roboto-mono {
+    font-family: var(--font-roboto-mono);
   }
 }
 

@@ -28,8 +28,10 @@ module.exports = {
           "purple-dim": "rgba(123, 97, 255, 0.10)",
         },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["Courier New", "monospace"],
+        sans: ["var(--font-roboto-mono)", "system-ui", "sans-serif"],
+        mono: ["var(--font-roboto-mono)", "monospace"],
+        serif: ["var(--font-playfair)", "serif"],
+        display: ["var(--font-playfair)", "serif"],
       },
       animation: {
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
