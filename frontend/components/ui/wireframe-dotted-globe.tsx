@@ -22,9 +22,11 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     if (!context) return
 
     // Set up responsive dimensions
-    const containerWidth = Math.min(width, window.innerWidth - 40)
-    const containerHeight = Math.min(height, window.innerHeight - 100)
-    const radius = Math.min(containerWidth, containerHeight) / 2.5
+    // Ensure square proportions based on the smaller available dimension
+    const size = Math.min(width, height, window.innerWidth - 40, window.innerHeight - 100)
+    const containerWidth = size
+    const containerHeight = size
+    const radius = size / 2.5
 
     const dpr = window.devicePixelRatio || 1
     canvas.width = containerWidth * dpr
